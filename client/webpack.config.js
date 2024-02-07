@@ -9,6 +9,7 @@ module.exports = () => {
     entry: {
       main: "./src/js/index.js",
       install: "./src/js/install.js",
+      editor: "./src/js/editor.js",
     },
     output: {
       filename: "[name].bundle.js",
@@ -20,16 +21,20 @@ module.exports = () => {
         swDest: "src-sw.js",
       }),
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
         name: "(Not) Just Any Text Editor",
         short_name: "JATE",
         description: "Description of your app",
         background_color: "#ffffff",
         theme_color: "#000000",
+        start_url: "./",
+        publicPath: "./",
         icons: [
           {
             src: path.resolve("src/images/logo.png"),
             sizes: [96, 128, 192, 256, 384, 512],
-            purpose: "any maskable",
+            destination: path.join("assets", "icons"),
           },
         ],
         publicPath: "/",
@@ -37,7 +42,6 @@ module.exports = () => {
       new HtmlWebpackPlugin({
         template: "./index.html",
         filename: "index.html",
-        chunks: ["main"],
       }),
     ],
 
