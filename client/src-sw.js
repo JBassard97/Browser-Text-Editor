@@ -26,6 +26,7 @@ registerRoute(
   })
 );
 
+// ! Major difficulty with this registering and caching correctly, obtained above code from group mini project's src-sw.js file Because it Works
 // const { offlineFallback, warmStrategyCache } = require("workbox-recipes");
 // const { CacheFirst } = require("workbox-strategies");
 // const { registerRoute } = require("workbox-routing");
